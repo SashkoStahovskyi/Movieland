@@ -19,9 +19,7 @@ public class MovieController {
 
     private final MovieService movieService;
     private final MovieMapper movieMapper;
-   /* Add possibility to get all movies.
-    URL should be /api/v1/movie, HTTP method GET.
-    Response should be in JSON format.*/
+
 
     @GetMapping
     public List<MovieDto> getAll() {
