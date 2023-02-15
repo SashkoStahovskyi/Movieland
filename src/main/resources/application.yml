@@ -10,9 +10,10 @@ spring:
       jpa:
           properties:
               hibernate:
+                  ddl-auto: update
                   dialect: org.hibernate.dialect.PostgreSQLDialect
                   format_sql: true
 
       flyway:
-          baseline-on-migrate: true
           enabled: true
+
