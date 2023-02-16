@@ -23,9 +23,17 @@ public class MovieController {
 
     @GetMapping
     public List<MovieDto> getAll() {
-      return  movieService.getAll().stream()
-              .map(movieMapper)
-              .collect(Collectors.toList());
+        return movieService.getAll().stream()
+                .map(movieMapper)
+                .collect(Collectors.toList());
+    }
+
+
+    @GetMapping(path = "/random")
+    public List<MovieDto> getRandom() {
+        return movieService.getRandom().stream()
+                .map(movieMapper)
+                .collect(Collectors.toList());
     }
 
 }
