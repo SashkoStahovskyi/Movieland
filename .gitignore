@@ -33,7 +33,7 @@ build/
 .vscode/
 
 ### Loggin ###
-logs
+movieland.log
 
 ### Env-vars ###
 application-dev.yml
