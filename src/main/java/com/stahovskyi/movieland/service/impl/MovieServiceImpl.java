@@ -13,9 +13,7 @@ import java.util.Random;
 @Service
 @RequiredArgsConstructor
 public class MovieServiceImpl implements MovieService {
-
     private final static int RANDOM_MOVIE_NUMBER = 3;
-
     private final MovieRepository movieRepository;
 
 
