@@ -1,7 +1,7 @@
 package com.stahovskyi.movieland.web.controller;
 
 import com.stahovskyi.movieland.dto.MovieDto;
-import com.stahovskyi.movieland.mapper.MovieMapper;
+import com.stahovskyi.movieland.mapper.Mappering;
 import com.stahovskyi.movieland.service.MovieService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 @RequiredArgsConstructor
@@ -18,22 +17,18 @@ import java.util.stream.Collectors;
 public class MovieController {
 
     private final MovieService movieService;
-    private final MovieMapper movieMapper;
+    private final Mappering mapper;
 
 
     @GetMapping
     public List<MovieDto> getAll() {
-        return movieService.getAll().stream()
-                .map(movieMapper)
-                .collect(Collectors.toList());
-    }
+        return mapper.toMovieDtoList(movieService.getAll());
 
+    }
 
     @GetMapping(path = "/random")
     public List<MovieDto> getRandom() {
-        return movieService.getRandom().stream()
-                .map(movieMapper)
-                .collect(Collectors.toList());
+        return mapper.toMovieDtoList(movieService.getRandom());
     }
 
 }

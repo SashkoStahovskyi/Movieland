@@ -1,7 +1,9 @@
 package com.stahovskyi.movieland.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,10 +13,12 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import java.time.LocalDate;
 
-@NoArgsConstructor
-@Entity
+@Setter
 @Getter
+@Entity
 @Table(name = "MOVIE")
+@NoArgsConstructor
+@AllArgsConstructor
 public class Movie {
 
     @Id
