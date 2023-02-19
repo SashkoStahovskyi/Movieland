@@ -17,7 +17,8 @@ public class MovieGenreServiceImpl implements MovieGenreService {
     private final MovieGenreRepository movieGenreRepository;
 
     @Override
-    public List<Genre> getAllGenre() {
+    public List<Genre> getAll() {
         return movieGenreRepository.findAll();
+      /*  userRepository.findAll(Sort.by(Sort.Direction.ASC, "id"));*/
     }
 }

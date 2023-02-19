@@ -14,14 +14,14 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping(path = "/api/v1/genre", produces = MediaType.APPLICATION_JSON_VALUE)
-public class MovieGenreController {
+public class GenreController {
     private final MovieGenreService genreService;
     private final Mappering mappering;
 
 
     @GetMapping
-    public List<GenreDto> getAllGenre() {
-        return mappering.toGenreDtoList(genreService.getAllGenre());
+    public List<GenreDto> getAll() {
+        return mappering.toGenreDtoList(genreService.getAll());
     }
 
 }

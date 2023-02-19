@@ -32,4 +32,9 @@ public class MovieServiceImpl implements MovieService {
         return result;
     }
 
+    @Override
+    public List<Movie> getAllByGenre(int genreId) {
+        return movieRepository.getAllByGenreId(genreId);
+    }
+
 }

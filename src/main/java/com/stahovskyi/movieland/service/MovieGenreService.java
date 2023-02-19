@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface MovieGenreService {
 
-    List<Genre> getAllGenre();
+    List<Genre> getAll();
 }
