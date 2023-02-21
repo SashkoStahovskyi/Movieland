@@ -34,6 +34,7 @@ build/
 
 ### Loggin ###
 movieland.log
+logs
 
 ### Env-vars ###
 application-dev.yml

@@ -5,7 +5,7 @@ import com.stahovskyi.movieland.entity.Genre;
 
 import java.util.List;
 
-public interface MovieGenreService {
+public interface GenreService {
 
     List<Genre> getAll();
 }
