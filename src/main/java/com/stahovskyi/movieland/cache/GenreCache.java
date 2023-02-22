@@ -43,8 +43,8 @@ public class GenreCache {
 
         @Override
         public void run() {
-            log.info(" Execute cache timer task !");
             updateCache();
+            log.info("Update genres in cache! Get {} item!", genreMap.get(GENRES_KEY).size());
         }
     }
 
