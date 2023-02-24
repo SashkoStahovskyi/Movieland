@@ -5,8 +5,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -49,17 +51,18 @@ public class Movie {
     private LocalDate yearOfRelease;
 
     @Column(name = "rating")
-    private int rating;        // todo change by double
+    private double rating;
 
     @Column(name = "price")
-    private int price;
+    private double price;
 
     @Column(name = "votes")
     private int votes;
 
-    @JoinTable(name = "movie_genre", joinColumns = @JoinColumn(name = "movie_id"),
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinTable(name = "movie_genre",
+            joinColumns = @JoinColumn(name = "movie_id"),
             inverseJoinColumns = @JoinColumn(name = "genre_id"))
-    @ManyToMany
-    private List<Genre> genre = new ArrayList<>();  // todo check why ?
+    private List<Genre> genre = new ArrayList<>();
 
 }

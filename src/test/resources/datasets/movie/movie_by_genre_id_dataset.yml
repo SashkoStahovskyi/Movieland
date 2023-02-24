@@ -1,0 +1,68 @@
+MOVIE:
+  - ID: 1
+    NAME_RUSSIAN: 'Побег из Шоушенка'
+    NAME_NATIVE: 'The Shaw shank Redemption'
+    DESCRIPTION: 'Успешный банкир Энди Дюфрейн.'
+    PICTURE_PATH: 'https://images-na.ssl-images-amazon.com/images/.jpg'
+    YEAR_OF_RELEASE: '1994-01-01'
+    RATING: 5.5
+    PRICE: 100.5
+    VOTES: 100
+
+  - ID: 2
+    NAME_RUSSIAN: 'Зеленая миля'
+    NAME_NATIVE: 'The Green Mile'
+    DESCRIPTION: 'Обвиненный в страшном преступлении, Джон Коффи оказывается.'
+    PICTURE_PATH: 'https://images-na.ssl-images-amazon.com/.jpg'
+    YEAR_OF_RELEASE: '1999-01-01'
+    RATING: 6
+    PRICE: 125
+    VOTES: 100
+
+  - ID: 3
+    NAME_RUSSIAN: 'Форрест Гамп'
+    NAME_NATIVE: 'Forrest Gump'
+    DESCRIPTION: 'От лица главного героя Форреста Гампа.'
+    PICTURE_PATH: 'https://images-na.ssl-images-amazon.com/images.jpg'
+    YEAR_OF_RELEASE: '1998-02-03'
+    RATING: 6.5
+    PRICE: 130.50
+    VOTES: 100
+
+  - ID: 4
+    NAME_RUSSIAN: 'Список Шиндлера'
+    NAME_NATIVE: 'Schindlers'
+    DESCRIPTION: 'Фильм рассказывает реальную историю загадочного Оскара Шиндлера.'
+    PICTURE_PATH: 'https://images-na.ssl-images-amazon.com/.jpg'
+    YEAR_OF_RELEASE: '2006-06-06'
+    RATING: 7
+    PRICE: 145.5
+    VOTES: 100
+
+
+GENRE:
+  - ID: 1
+    NAME: 'драма'
+
+  - ID: 2
+    NAME: 'криминал'
+
+  - ID: 3
+    NAME: 'фэнтези'
+
+  - ID: 4
+    NAME: 'детектив'
+
+
+MOVIE_GENRE:
+  - MOVIE_ID: 1
+    GENRE_ID: 1
+
+  - MOVIE_ID: 2
+    GENRE_ID: 1
+
+  - MOVIE_ID: 3
+    GENRE_ID: 3
+
+  - MOVIE_ID: 4
+    GENRE_ID: 4

@@ -1,0 +1,112 @@
+[
+  {
+    "id": 1,
+    "nameRussian": "Побег из Шоушенка",
+    "nameNative": "The Shaw shank Redemption",
+    "description": "Успешный банкир Энди Дюфрейн.",
+    "picturePath": "https://images-na.ssl-images-amazon.com/images/.jpg",
+    "yearOfRelease": 1994,
+    "rating": 5.5,
+    "price": 100.5,
+    "votes": 100
+  },
+  {
+    "id": 2,
+    "nameRussian": "Зеленая миля",
+    "nameNative": "The Green Mile",
+    "description": "Обвиненный в страшном преступлении, Джон Коффи оказывается.",
+    "picturePath": "https://images-na.ssl-images-amazon.com/.jpg",
+    "yearOfRelease": 1999,
+    "rating": 6.0,
+    "price": 125.0,
+    "votes": 100
+  },
+  {
+    "id": 3,
+    "nameRussian": "Форрест Гамп",
+    "nameNative": "Forrest Gump",
+    "description": "От лица главного героя Форреста Гампа.",
+    "picturePath": "https://images-na.ssl-images-amazon.com/images.jpg",
+    "yearOfRelease": 1998,
+    "rating": 6.5,
+    "price": 130.5,
+    "votes": 100
+  },
+  {
+    "id": 4,
+    "nameRussian": "Список Шиндлера",
+    "nameNative": "Schindlers",
+    "description": "Фильм рассказывает реальную историю загадочного Оскара Шиндлера.",
+    "picturePath": "https://images-na.ssl-images-amazon.com/.jpg",
+    "yearOfRelease": 2006,
+    "rating": 7.0,
+    "price": 145.5,
+    "votes": 100
+  },
+  {
+    "id": 5,
+    "nameRussian": "1+1",
+    "nameNative": "Untouchables",
+    "description": "Пострадав в результате несчастного случая, богатый аристократ Филипп.",
+    "picturePath": "https://images-na.ssl-images-amazon.com/images.jpg",
+    "yearOfRelease": 2011,
+    "rating": 7.5,
+    "price": 155.0,
+    "votes": 100
+  },
+  {
+    "id": 6,
+    "nameRussian": "Начало",
+    "nameNative": "Inception",
+    "description": "Кобб — талантливый вор, лучший из лучших в опасном искусстве извлечения.",
+    "picturePath": "https://images-na.ssl-images-amazon.com/.jpg",
+    "yearOfRelease": 2002,
+    "rating": 8.0,
+    "price": 160.5,
+    "votes": 100
+  },
+  {
+    "id": 7,
+    "nameRussian": "Жизнь прекрасна",
+    "nameNative": "La vita è bella",
+    "description": "Во время II Мировой войны в Италии.",
+    "picturePath": "https://images-na.ssl-images-amazon.com/images.jpg",
+    "yearOfRelease": 2015,
+    "rating": 8.5,
+    "price": 170.5,
+    "votes": 100
+  },
+  {
+    "id": 8,
+    "nameRussian": "Бойцовский клуб",
+    "nameNative": "Fight Club",
+    "description": "Терзаемый хронической бессонницей и отчаянно пытающийся вырваться.",
+    "picturePath": "https://images-na.ssl-images-amazon.com.jpg",
+    "yearOfRelease": 2002,
+    "rating": 9.0,
+    "price": 175.55,
+    "votes": 100
+  },
+  {
+    "id": 9,
+    "nameRussian": "Звёздные войны: Эпизод 4 – Новая надежда",
+    "nameNative": "Star Wars",
+    "description": "Татуин. Планета-пустыня. Уже постаревший рыцарь Джедай.",
+    "picturePath": "https://images-na.ssl-images-amazon.com/images.jpg",
+    "yearOfRelease": 2013,
+    "rating": 9.5,
+    "price": 200.5,
+    "votes": 100
+  },
+  {
+    "id": 10,
+    "nameRussian": "Звёздные войны: Эпизод 5 – Империя наносит ответный удар",
+    "nameNative": "Star Wars: Episode V - The Empire Strikes Back",
+    "description": "Борьба за Галактику обостряется в пятом эпизоде космической саги.",
+    "picturePath": "https://images-na.ssl-images-amazon.com/.jpg",
+    "yearOfRelease": 1980,
+    "rating": 10.0,
+    "price": 220.5,
+    "votes": 100
+  }
+]

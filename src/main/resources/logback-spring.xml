@@ -5,7 +5,7 @@
     <appender name="Console" class="ch.qos.logback.core.ConsoleAppender">
         <layout class="ch.qos.logback.classic.PatternLayout">
             <Pattern>
-                %green(%d) %magenta([%t]) %highlight(%-5level) %cyan(%C{1.}) %magenta(%m%n)
+                 %green(%d) %magenta([%t]) %highlight(%-5level) %cyan(%C{1.}) %magenta(%m%n)
             </Pattern>
         </layout>
     </appender>

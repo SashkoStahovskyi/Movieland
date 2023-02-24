@@ -1,0 +1,100 @@
+MOVIE:
+  - ID: 1
+    NAME_RUSSIAN: 'Побег из Шоушенка'
+    NAME_NATIVE: 'The Shaw shank Redemption'
+    DESCRIPTION: 'Успешный банкир Энди Дюфрейн.'
+    PICTURE_PATH: 'https://images-na.ssl-images-amazon.com/images/.jpg'
+    YEAR_OF_RELEASE: '1994-01-01'
+    RATING: 5.5
+    PRICE: 100.5
+    VOTES: 100
+
+  - ID: 2
+    NAME_RUSSIAN: 'Зеленая миля'
+    NAME_NATIVE: 'The Green Mile'
+    DESCRIPTION: 'Обвиненный в страшном преступлении, Джон Коффи оказывается.'
+    PICTURE_PATH: 'https://images-na.ssl-images-amazon.com/.jpg'
+    YEAR_OF_RELEASE: '1999-01-01'
+    RATING: 6
+    PRICE: 125
+    VOTES: 100
+
+  - ID: 3
+    NAME_RUSSIAN: 'Форрест Гамп'
+    NAME_NATIVE: 'Forrest Gump'
+    DESCRIPTION: 'От лица главного героя Форреста Гампа.'
+    PICTURE_PATH: 'https://images-na.ssl-images-amazon.com/images.jpg'
+    YEAR_OF_RELEASE: '1998-02-03'
+    RATING: 6.5
+    PRICE: 130.50
+    VOTES: 100
+
+  - ID: 4
+    NAME_RUSSIAN: 'Список Шиндлера'
+    NAME_NATIVE: 'Schindlers'
+    DESCRIPTION: 'Фильм рассказывает реальную историю загадочного Оскара Шиндлера.'
+    PICTURE_PATH: 'https://images-na.ssl-images-amazon.com/.jpg'
+    YEAR_OF_RELEASE: '2006-06-06'
+    RATING: 7
+    PRICE: 145.5
+    VOTES: 100
+
+  - ID: 5
+    NAME_RUSSIAN: '1+1'
+    NAME_NATIVE: 'Untouchables'
+    DESCRIPTION: 'Пострадав в результате несчастного случая, богатый аристократ Филипп.'
+    PICTURE_PATH: 'https://images-na.ssl-images-amazon.com/images.jpg'
+    YEAR_OF_RELEASE: '2011-06-06'
+    RATING: 7.5
+    PRICE: 155
+    VOTES: 100
+
+  - ID: 6
+    NAME_RUSSIAN: 'Начало'
+    NAME_NATIVE: 'Inception'
+    DESCRIPTION: 'Кобб — талантливый вор, лучший из лучших в опасном искусстве извлечения.'
+    PICTURE_PATH: 'https://images-na.ssl-images-amazon.com/.jpg'
+    YEAR_OF_RELEASE: '2002-03-05'
+    RATING: 8
+    PRICE: 160.5
+    VOTES: 100
+
+  - ID: 7
+    NAME_RUSSIAN: 'Жизнь прекрасна'
+    NAME_NATIVE: 'La vita è bella'
+    DESCRIPTION: 'Во время II Мировой войны в Италии.'
+    PICTURE_PATH: 'https://images-na.ssl-images-amazon.com/images.jpg'
+    YEAR_OF_RELEASE: '2015-06-06'
+    RATING: 8.5
+    PRICE: 170.5
+    VOTES: 100
+
+  - ID: 8
+    NAME_RUSSIAN: 'Бойцовский клуб'
+    NAME_NATIVE: 'Fight Club'
+    DESCRIPTION: 'Терзаемый хронической бессонницей и отчаянно пытающийся вырваться.'
+    PICTURE_PATH: 'https://images-na.ssl-images-amazon.com.jpg'
+    YEAR_OF_RELEASE: '2002-06-09'
+    RATING: 9
+    PRICE: 175.55
+    VOTES: 100
+
+  - ID: 9
+    NAME_RUSSIAN: 'Звёздные войны: Эпизод 4 – Новая надежда'
+    NAME_NATIVE: 'Star Wars'
+    DESCRIPTION: 'Татуин. Планета-пустыня. Уже постаревший рыцарь Джедай.'
+    PICTURE_PATH: 'https://images-na.ssl-images-amazon.com/images.jpg'
+    YEAR_OF_RELEASE: '2013-04-06'
+    RATING: 9.5
+    PRICE: 200.5
+    VOTES: 100
+
+  - ID: 10
+    NAME_RUSSIAN: 'Звёздные войны: Эпизод 5 – Империя наносит ответный удар'
+    NAME_NATIVE: 'Star Wars: Episode V - The Empire Strikes Back'
+    DESCRIPTION: 'Борьба за Галактику обостряется в пятом эпизоде космической саги.'
+    PICTURE_PATH: 'https://images-na.ssl-images-amazon.com/.jpg'
+    YEAR_OF_RELEASE: '1980-03-05'
+    RATING: 10
+    PRICE: 220.5
+    VOTES: 100

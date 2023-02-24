@@ -5,8 +5,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDate;
-
 @Getter
 @Setter
 @NoArgsConstructor
@@ -18,8 +16,8 @@ public class MovieDto {
     private String nameNative;
     private String description;
     private String picturePath;
-    private LocalDate yearOfRelease;
-    private int rating;
-    private int price;
+    private int yearOfRelease;
+    private double rating;
+    private double price;
     private int votes;
 }

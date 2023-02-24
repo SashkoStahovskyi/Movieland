@@ -35,12 +35,10 @@ public class MovieServiceImpl implements MovieService {
     @Override
     public List<Movie> getAll(MovieRequest movieRequest) {
 
-        if (nonNull(movieRequest.getRatingSortDirection()) || nonNull(movieRequest.getPriceSortDirection())) {
+        if (nonNull(movieRequest.getRatingSortDirection()) && nonNull(movieRequest.getPriceSortDirection())) {
             List<Order> ordersList = getOrders(movieRequest);
-
             return movieRepository.findAll(Sort.by(ordersList));
         }
-
         return nonNull(movieRequest.getPriceSortDirection()) ?
                 movieRepository.findAll(Sort.by(Direction.fromString(movieRequest.getPriceSortDirection()), PRICE_PROPERTIES))
                 : movieRepository.findAll(Sort.by(Direction.fromString(movieRequest.getRatingSortDirection()), RATING_PROPERTIES));

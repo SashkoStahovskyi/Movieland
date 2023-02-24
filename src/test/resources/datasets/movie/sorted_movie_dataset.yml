@@ -1,0 +1,50 @@
+MOVIE:
+  - ID: 1
+    NAME_RUSSIAN: 'Побег из Шоушенка'
+    NAME_NATIVE: 'The Shawshank Redemption'
+    YEAR_OF_RELEASE: '1994-01-01'
+    DESCRIPTION: 'Успешный банкир Энди Дюфрейн обвинен в убийстве'
+    RATING: 5.5
+    PRICE: 100.50
+    PICTURE_PATH: 'https://images.jpg'
+    VOTES: 100
+
+  - ID: 2
+    NAME_RUSSIAN: 'Зеленая миля'
+    NAME_NATIVE: 'The Green Mile'
+    YEAR_OF_RELEASE: '1999-01-01'
+    DESCRIPTION: 'Обвиненный в страшном преступлении'
+    RATING: 6.5
+    PRICE: 110.50
+    PICTURE_PATH: 'https://images.jpg'
+    VOTES: 100
+
+  - ID: 3
+    NAME_RUSSIAN: 'Танцующий с волками'
+    NAME_NATIVE: 'Dances with Wolves'
+    YEAR_OF_RELEASE: '1998-02-03'
+    DESCRIPTION: 'Денсил всю ноч как дикий пес'
+    RATING: 7.5
+    PRICE: 125.50
+    PICTURE_PATH: 'https://images.jpg'
+    VOTES: 100
+
+  - ID: 4
+    NAME_RUSSIAN: 'Карате пацан'
+    NAME_NATIVE: 'Karate Kids'
+    YEAR_OF_RELEASE: '2006-06-06'
+    DESCRIPTION: 'Супер пепер карате пацан'
+    RATING: 8.0
+    PRICE: 140.50
+    PICTURE_PATH: 'https://images.jpg'
+    VOTES: 100
+
+  - ID: 5
+    NAME_RUSSIAN: 'Тоторо'
+    NAME_NATIVE: 'Totoro'
+    YEAR_OF_RELEASE: '2000-01-01'
+    DESCRIPTION: 'Тоторо лесной дух'
+    RATING: 9.5
+    PRICE: 150.50
+    PICTURE_PATH: 'https://images.jpg'
+    VOTES: 100

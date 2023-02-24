@@ -1,0 +1,24 @@
+[
+  {
+    "id": 1,
+    "nameRussian": "Побег из Шоушенка",
+    "nameNative": "The Shaw shank Redemption",
+    "description": "Успешный банкир Энди Дюфрейн.",
+    "picturePath": "https://images-na.ssl-images-amazon.com/images/.jpg",
+    "yearOfRelease": 1994,
+    "rating": 5.5,
+    "price": 100.5,
+    "votes": 100
+  },
+  {
+    "id": 2,
+    "nameRussian": "Зеленая миля",
+    "nameNative": "The Green Mile",
+    "description": "Обвиненный в страшном преступлении, Джон Коффи оказывается.",
+    "picturePath": "https://images-na.ssl-images-amazon.com/.jpg",
+    "yearOfRelease": 1999,
+    "rating": 6.0,
+    "price": 125.0,
+    "votes": 100
+  }
+]

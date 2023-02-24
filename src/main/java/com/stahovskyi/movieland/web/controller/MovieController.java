@@ -41,7 +41,7 @@ public class MovieController {
     }
 
     @GetMapping(path = "/genre/{genreId}")
-    public List<MovieDto> getAllByGenre(@PathVariable("genreId")
+    public List<MovieDto> getAllByGenreId(@PathVariable("genreId")
                                         int genreId) {
         return mapper.toMovieDtoList(movieService.getAllByGenre(genreId));
     }
