@@ -25,14 +25,16 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 class MovieControllerITest extends AbstractWebITest {
 
     private static final String GET_ALL_ENDPOINT = "/api/v1/movie";
+
+    private static final String GET_BY_ID_ENDPOINT = "/api/v1/movie/2";
     private static final String GET_ALL_BY_GENRE_ID_ENDPOINT = "/api/v1/movie/genre/1";
 
 
     @Test
     @DataSet(value = "datasets/movie/movie_dataset.yml",
             cleanAfter = true, cleanBefore = true, skipCleaningFor = "flyway_schema_history")
-    @DisplayName("when Get All then All Movies And Ok Status Returned")
-    void whenGetAll_ThenAllMovies_AndOkStatusReturned() throws Exception {
+    @DisplayName("when Get All then All Movies and Ok Status Returned")
+    void whenGetAll_ThenAllMovies_andOkStatusReturned() throws Exception {
 
         SQLStatementCountValidator.reset();
 
@@ -47,8 +49,8 @@ class MovieControllerITest extends AbstractWebITest {
 
     @Test
     @DataSet("datasets/movie/movie_dataset.yml")
-    @DisplayName("when Get All Sorted By Rating Param then All Sorted Movies And Ok Status Returned")
-    void whenGetAllSortedByRating_ThenAllSortedMovies_AndOkStatusReturned() throws Exception {
+    @DisplayName("when Get All Sorted By Rating Param then All Sorted Movies and Ok Status Returned")
+    void whenGetAllSortedByRating_thenAllSortedMovies_andOkStatusReturned() throws Exception {
 
         SQLStatementCountValidator.reset();
 
@@ -68,8 +70,8 @@ class MovieControllerITest extends AbstractWebITest {
     @Test
     @DataSet(value = "datasets/movie/movie_dataset.yml",
             cleanAfter = true, cleanBefore = true, skipCleaningFor = "flyway_schema_history")
-    @DisplayName("when Get All Sorted By Price Param then All Sorted Movies And Ok Status Returned")
-    void whenGetAllSortedByPrice_ThenAllSortedMovies_AndOkStatusReturned() throws Exception {
+    @DisplayName("when Get All Sorted By Price Param then All Sorted Movies and Ok Status Returned")
+    void whenGetAllSortedByPrice_thenAllSortedMovies_andOkStatusReturned() throws Exception {
 
         SQLStatementCountValidator.reset();
 
@@ -83,14 +85,13 @@ class MovieControllerITest extends AbstractWebITest {
                         .json(getResponseAsString("response/movie/sorted_movie_response.json")));
 
         assertSelectCount(1);
-
     }
 
 
     @Test
     @DataSet("datasets/movie/movie_by_genre_id_dataset.yml")
-    @DisplayName("when Get All Movie By Genre Id then Movie By Specified Genre And Ok Status Returned")
-    void whenGetAllByGenreId_ThenMovieBySpecifiedGenre_AndOkStatusReturned() throws Exception {
+    @DisplayName("when Get All Movie By Genre Id then Movie By Specified Genre and Ok Status Returned")
+    void whenGetAllByGenreId_thenMovieBySpecifiedGenre_andOkStatusReturned() throws Exception {
 
         SQLStatementCountValidator.reset();
 
@@ -101,6 +102,22 @@ class MovieControllerITest extends AbstractWebITest {
                         .json(getResponseAsString("response/movie/movie_by_genre_id_response.json")));
 
         assertSelectCount(1);
+    }
+
+    @Test
+    @DataSet(value = "datasets/movie/movie_by_id_dataset.yml")
+    @DisplayName("when Get Movie By Id then Movie With Country Genre Review and Ok Status Returned")
+    void whenGetMovieById_thenMovie_andOkStatusReturned() throws Exception {
+
+        SQLStatementCountValidator.reset();
+
+        mockMvc.perform(get(GET_BY_ID_ENDPOINT)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(content()
+                        .json(getResponseAsString("response/movie/movie_by_id_response.json")));
+
+        assertSelectCount(6);  // todo --> need fix N + 1
     }
 
 }

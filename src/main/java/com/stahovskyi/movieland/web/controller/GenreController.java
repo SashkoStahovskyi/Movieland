@@ -2,7 +2,7 @@ package com.stahovskyi.movieland.web.controller;
 
 import com.stahovskyi.movieland.cache.GenreCache;
 import com.stahovskyi.movieland.dto.GenreDto;
-import com.stahovskyi.movieland.mapper.Mappering;
+import com.stahovskyi.movieland.mapper.MovieMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,11 +16,11 @@ import java.util.List;
 @RequestMapping(path = "/api/v1/genre", produces = MediaType.APPLICATION_JSON_VALUE)
 public class GenreController {
     private final GenreCache genreCache;
-    private final Mappering mappering;
+    private final MovieMapper mappering;
 
 
     @GetMapping
-    public List<GenreDto> getAll() {
+    protected List<GenreDto> getAll() {
         return mappering.toGenreDtoList(genreCache.getAll());
     }
 

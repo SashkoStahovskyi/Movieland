@@ -5,16 +5,15 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import java.time.LocalDate;
@@ -59,10 +58,19 @@ public class Movie {
     @Column(name = "votes")
     private int votes;
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinTable(name = "movie_genre",
+    @ManyToMany
+    @JoinTable(name = "MOVIE_GENRE",
             joinColumns = @JoinColumn(name = "movie_id"),
             inverseJoinColumns = @JoinColumn(name = "genre_id"))
     private List<Genre> genre = new ArrayList<>();
+
+    @ManyToMany
+    @JoinTable(name = "MOVIE_COUNTRY",
+            joinColumns = @JoinColumn(name = "movie_id"),
+            inverseJoinColumns = @JoinColumn(name = "country_id"))
+    private List<Country> countries = new ArrayList<>();
+
+    @OneToMany(mappedBy = "movie")
+    private List<Review> reviews = new ArrayList<>();
 
 }

@@ -5,11 +5,13 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class MovieDto {
+public class DetailedMovieDto {
 
     private int id;
     private String nameRussian;
@@ -20,5 +22,8 @@ public class MovieDto {
     private double rating;
     private double price;
     private int votes;
+    private List<GenreDto> genres;
+    private List<CountryDto> countries;
+    private List<ReviewDto> reviews;
 
 }

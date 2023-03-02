@@ -5,9 +5,14 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface MovieRepository extends JpaRepository<Movie, Integer> {
 
-    List<Movie> getAllByGenreId(int genreId);
+    Optional<List<Movie>> getAllByGenreId(int genreId);
+
+    /*@EntityGraph(attributePaths = "users")
+    @Query(value = "SELECT m FROM movie WHERE id:movieId ")
+    Optional<Movie> findById(Integer movieId);*/
 }

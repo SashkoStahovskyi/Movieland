@@ -58,27 +58,27 @@ CREATE TABLE rating
 
 CREATE SEQUENCE user_id_sequence
     AS BIGINT
-    INCREMENT BY 10
+    INCREMENT BY 50
     OWNED BY users.id;
 
 CREATE SEQUENCE genres_id_sequence
     AS BIGINT
-    INCREMENT BY 10
+    INCREMENT BY 50
     OWNED BY genre.id;
 
 CREATE SEQUENCE movies_id_sequence
     AS BIGINT
-    INCREMENT BY 10
+    INCREMENT BY 50
     OWNED BY movie.id;
 
 CREATE SEQUENCE country_id_sequence
     AS BIGINT
-    INCREMENT BY 10
+    INCREMENT BY 50
     OWNED BY country.id;
 
 CREATE SEQUENCE review_id_sequence
     AS BIGINT
-    INCREMENT BY 10
+    INCREMENT BY 50
     OWNED BY review.id;
 
 ALTER TABLE movie_genre

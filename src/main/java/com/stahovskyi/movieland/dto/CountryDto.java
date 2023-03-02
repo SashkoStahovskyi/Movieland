@@ -9,9 +9,9 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class GenreDto {
+public class CountryDto {
 
     private int id;
-    private String name;
+    private String country;
 
 }

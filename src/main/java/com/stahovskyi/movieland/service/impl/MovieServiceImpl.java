@@ -1,6 +1,8 @@
 package com.stahovskyi.movieland.service.impl;
 
 import com.stahovskyi.movieland.entity.Movie;
+import com.stahovskyi.movieland.exception.GenreNotFoundException;
+import com.stahovskyi.movieland.exception.MovieNotFoundException;
 import com.stahovskyi.movieland.repository.MovieRepository;
 import com.stahovskyi.movieland.service.MovieService;
 import com.stahovskyi.movieland.web.controller.request.MovieRequest;
@@ -23,9 +25,8 @@ public class MovieServiceImpl implements MovieService {
     private final static String RATING_PROPERTIES = "rating";
     private final static String PRICE_PROPERTIES = "price";
     private final static int RANDOM_MOVIE_NUMBER = 3;
-
-
     private final MovieRepository movieRepository;
+
 
     @Override
     public List<Movie> getAll() {
@@ -42,9 +43,13 @@ public class MovieServiceImpl implements MovieService {
         return nonNull(movieRequest.getPriceSortDirection()) ?
                 movieRepository.findAll(Sort.by(Direction.fromString(movieRequest.getPriceSortDirection()), PRICE_PROPERTIES))
                 : movieRepository.findAll(Sort.by(Direction.fromString(movieRequest.getRatingSortDirection()), RATING_PROPERTIES));
-
     }
 
+    @Override
+    public Movie getById(int movieId) {
+        return movieRepository.findById(movieId)
+                .orElseThrow(() -> new MovieNotFoundException(movieId));
+    }
 
     @Override
     public List<Movie> getAllRandom() {
@@ -58,8 +63,9 @@ public class MovieServiceImpl implements MovieService {
     }
 
     @Override
-    public List<Movie> getAllByGenre(int genreId) {
-        return movieRepository.getAllByGenreId(genreId);
+    public List<Movie> getAllByGenreId(int genreId) {
+        return movieRepository.getAllByGenreId(genreId)
+                .orElseThrow(() -> new GenreNotFoundException(genreId));
     }
 
     private List<Order> getOrders(MovieRequest movieRequest) {

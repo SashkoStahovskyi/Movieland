@@ -1,0 +1,45 @@
+{
+  "id": 2,
+  "nameRussian": "Зеленая миля",
+  "nameNative": "The Green Mile",
+  "description": "Обвиненный в страшном преступлении",
+  "picturePath": "https://images.jpg",
+  "yearOfRelease": 1999,
+  "rating": 8.9,
+  "price": 134.67,
+  "votes": 100,
+  "genres": [
+    {
+      "id": 1,
+      "name": "драма"
+    },
+    {
+      "id": 2,
+      "name": "криминал"
+    }
+  ],
+  "countries": [
+    {
+      "id": 1,
+      "country": "USA"
+    }
+  ],
+  "reviews": [
+    {
+      "id": 1,
+      "user": {
+        "id": 1,
+        "nickName": "Джесси Паттерсон"
+      },
+      "description": "Гениальное кино!"
+    },
+    {
+      "id": 2,
+      "user": {
+        "id": 2,
+        "nickName": "Трэвис Райт"
+      },
+      "description": "Очень хороший фильм!"
+    }
+  ]
+}

@@ -1,7 +1,8 @@
 package com.stahovskyi.movieland.web.controller;
 
+import com.stahovskyi.movieland.dto.DetailedMovieDto;
 import com.stahovskyi.movieland.dto.MovieDto;
-import com.stahovskyi.movieland.mapper.Mappering;
+import com.stahovskyi.movieland.mapper.MovieMapper;
 import com.stahovskyi.movieland.service.MovieService;
 import com.stahovskyi.movieland.web.controller.request.MovieRequest;
 import lombok.RequiredArgsConstructor;
@@ -21,29 +22,36 @@ import java.util.List;
 public class MovieController {
 
     private final MovieService movieService;
-    private final Mappering mapper;
+
+    private final MovieMapper movieMapper;
 
 
     @GetMapping
-    public List<MovieDto> getAll() {
-        return mapper.toMovieDtoList(movieService.getAll());
+    protected List<MovieDto> getAll() {
+        return movieMapper.toMovieDtoList(movieService.getAll());
     }
 
     @PostMapping
-    public List<MovieDto> getAll(@RequestBody(required = false)
-                                 MovieRequest request) {
-        return mapper.toMovieDtoList(movieService.getAll(request));
+    protected List<MovieDto> getAll(@RequestBody(required = false)
+                                    MovieRequest request) {
+        return movieMapper.toMovieDtoList(movieService.getAll(request));
+    }
+
+    @GetMapping(path = "/{movieId}")
+    protected DetailedMovieDto getById(@PathVariable(value = "movieId")
+                                       int movieId) {
+        return movieMapper.toDetailedMovieDto(movieService.getById(movieId));
     }
 
     @GetMapping(path = "/random")
-    public List<MovieDto> getAllRandom() {
-        return mapper.toMovieDtoList(movieService.getAllRandom());
+    protected List<MovieDto> getAllRandom() {
+        return movieMapper.toMovieDtoList(movieService.getAllRandom());
     }
 
     @GetMapping(path = "/genre/{genreId}")
-    public List<MovieDto> getAllByGenreId(@PathVariable("genreId")
-                                        int genreId) {
-        return mapper.toMovieDtoList(movieService.getAllByGenre(genreId));
+    protected List<MovieDto> getAllByGenreId(@PathVariable("genreId")
+                                             int genreId) {
+        return movieMapper.toMovieDtoList(movieService.getAllByGenreId(genreId));
     }
 
 }

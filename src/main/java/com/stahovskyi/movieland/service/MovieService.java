@@ -11,7 +11,9 @@ public interface MovieService {
 
     List<Movie> getAll(MovieRequest request);
 
-    List<Movie> getAllRandom();
+    Movie getById(int movieId);
 
-    List<Movie> getAllByGenre(int genreId);
+    List<Movie> getAllByGenreId(int genreId);
+
+    List<Movie> getAllRandom();
 }
