@@ -1,18 +1,26 @@
-
 spring:
 
-      profiles:
-          active: dev
+  profiles:
+    active: dev
 
-      datasource:
-          driver-class-name: org.postgresql.Driver
+  datasource:
+    driver-class-name: org.postgresql.Driver
 
-      jpa:
-          properties:
-              hibernate:
-                  ddl-auto: create-drop
-                  dialect: org.hibernate.dialect.PostgreSQLDialect
-                  format_sql: true
+  jpa:
+    properties:
+      hibernate:
+        ddl-auto: create-drop
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
 
-      flyway:
-          enabled: true
+  flyway:
+    enabled: true
+
+#  CacheEvict Schedule props
+initialDelay:
+  in:
+    hours: 4
+
+fixedDelay:
+  in:
+    hours: 4

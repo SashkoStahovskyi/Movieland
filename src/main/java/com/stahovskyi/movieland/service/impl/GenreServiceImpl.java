@@ -4,21 +4,37 @@ import com.stahovskyi.movieland.entity.Genre;
 import com.stahovskyi.movieland.repository.GenreRepository;
 import com.stahovskyi.movieland.service.GenreService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class GenreServiceImpl implements GenreService {
 
-    // todo -> why failed with constant ??
-    /*private static final Sort SORT_BY_ASC_DIRECTION = Sort.by(Sort.Direction.ASC);*/
     private final GenreRepository movieGenreRepository;
 
+
+    @Cacheable(cacheNames = "genre_cache")
     @Override
     public List<Genre> getAll() {
+        log.info(" Update genres in cache ! ");
         return movieGenreRepository.findAll();
-      /*  userRepository.findAll(Sort.by(Sort.Direction.ASC, "id"));*/
+
     }
+
+    @Scheduled(initialDelayString = "${initialDelay.in.hours}", fixedDelayString = "${fixedDelay.in.hours}",
+            timeUnit = TimeUnit.HOURS)
+    @CacheEvict(cacheNames = "genre_cache", allEntries = true)
+    public void genreCacheEvict() {
+        log.info(" The cache of genres has been removed ! ");
+
+    }
+
 }
