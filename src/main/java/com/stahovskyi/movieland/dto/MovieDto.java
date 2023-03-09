@@ -12,13 +12,21 @@ import lombok.Setter;
 public class MovieDto {
 
     private int id;
+
     private String nameRussian;
+
     private String nameNative;
+
     private String description;
+
     private String picturePath;
+
     private int yearOfRelease;
+
     private double rating;
+
     private double price;
+
     private int votes;
 
 }

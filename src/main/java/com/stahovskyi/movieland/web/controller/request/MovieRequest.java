@@ -7,9 +7,10 @@ import lombok.Setter;
 @Setter
 @Getter
 @AllArgsConstructor
-public class MovieRequest {
+public class MovieRequest { // todo need refactoring
 
     String priceSortDirection;
+
     String ratingSortDirection;
 
 }

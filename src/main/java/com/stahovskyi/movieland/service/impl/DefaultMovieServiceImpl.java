@@ -4,7 +4,9 @@ import com.stahovskyi.movieland.entity.Movie;
 import com.stahovskyi.movieland.exception.GenreNotFoundException;
 import com.stahovskyi.movieland.exception.MovieNotFoundException;
 import com.stahovskyi.movieland.repository.MovieRepository;
+import com.stahovskyi.movieland.service.CurrencyService;
 import com.stahovskyi.movieland.service.MovieService;
+import com.stahovskyi.movieland.service.dto.CurrencyType;
 import com.stahovskyi.movieland.web.controller.request.MovieRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Sort;
@@ -20,12 +22,14 @@ import static java.util.Objects.nonNull;
 
 @Service
 @RequiredArgsConstructor
-public class MovieServiceImpl implements MovieService {
+public class DefaultMovieServiceImpl implements MovieService {
 
     private final static String RATING_PROPERTIES = "rating";
     private final static String PRICE_PROPERTIES = "price";
-    private final static int RANDOM_MOVIE_NUMBER = 3;
+    private final static int RANDOM_MOVIE_NUMBER = 3; // todo from prop file
     private final MovieRepository movieRepository;
+
+    private final CurrencyService currencyService;
 
 
     @Override
@@ -40,15 +44,18 @@ public class MovieServiceImpl implements MovieService {
             List<Order> ordersList = getOrders(movieRequest);
             return movieRepository.findAll(Sort.by(ordersList));
         }
-        return nonNull(movieRequest.getPriceSortDirection()) ?
+        return nonNull(movieRequest.getPriceSortDirection()) ?                           // todo refactoring DESC/ASC
                 movieRepository.findAll(Sort.by(Direction.fromString(movieRequest.getPriceSortDirection()), PRICE_PROPERTIES))
                 : movieRepository.findAll(Sort.by(Direction.fromString(movieRequest.getRatingSortDirection()), RATING_PROPERTIES));
     }
 
     @Override
-    public Movie getById(int movieId) {
+    public Movie getById(int movieId, CurrencyType currencyType) {
+
         return movieRepository.findById(movieId)
+                .map(movie -> currencyService.convertCurrency(movie, currencyType))
                 .orElseThrow(() -> new MovieNotFoundException(movieId));
+
     }
 
     @Override

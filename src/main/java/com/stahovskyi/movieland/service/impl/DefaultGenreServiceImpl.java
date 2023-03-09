@@ -16,7 +16,7 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 @Service
 @RequiredArgsConstructor
-public class GenreServiceImpl implements GenreService {
+public class DefaultGenreServiceImpl implements GenreService {
 
     private final GenreRepository movieGenreRepository;
 
