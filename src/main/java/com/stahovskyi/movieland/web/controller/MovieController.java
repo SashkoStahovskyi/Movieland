@@ -34,20 +34,11 @@ public class MovieController {
     }
 
     @PostMapping
-    protected List<MovieDto> getAll(@RequestBody(required = false) // todo its correct method ?
+    protected List<MovieDto> getAll(@RequestBody(required = false)
                                     MovieRequest request) {
         return movieMapper.toMovieDtoList(movieService.getAll(request));
 
     }
-
-    /*While sending requests to get movie by id [b-6],
-    in order to receive movie price in selected currency.
-            1. In DB, all prices are stored in UAH.
-            2. Price can be converted to USD or EUR.
-            3. For example, /v1/movie/{movieId}?currency=USD.
-            4. Prices should be converted according to today NBU rate.
-            5. By default, selected currency is UAH.*/
-
 
     @GetMapping(path = "/{movieId}")
     protected DetailedMovieDto getById(@PathVariable(value = "movieId") int movieId,
@@ -57,8 +48,8 @@ public class MovieController {
     }
 
     @GetMapping(path = "/random")
-    protected List<MovieDto> getAllRandom() {
-        return movieMapper.toMovieDtoList(movieService.getAllRandom());
+    protected List<MovieDto> getRandom() {
+        return movieMapper.toMovieDtoList(movieService.getRandom());
     }
 
     @GetMapping(path = "/genre/{genreId}")

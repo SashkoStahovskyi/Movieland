@@ -13,11 +13,10 @@ spring:
   flyway:
     enabled: true
 
-#  CacheEvict Schedule props
-initialDelay:
-  in:
+#  CacheEvict Schedule
+scheduled:
+  initialDelay:
     hours: 4
 
-fixedDelay:
-  in:
+  fixedDelay:
     hours: 4

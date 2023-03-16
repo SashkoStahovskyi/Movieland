@@ -7,9 +7,7 @@ import lombok.Getter;
 public enum CurrencyType {
 
     USD("USD"),
-
     EUR("EUR"),
-
     UAH("UAH");
 
     @Getter

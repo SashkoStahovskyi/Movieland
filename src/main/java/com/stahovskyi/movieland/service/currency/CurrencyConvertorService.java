@@ -5,45 +5,60 @@ import com.stahovskyi.movieland.service.CurrencyService;
 import com.stahovskyi.movieland.service.currency.entity.Currency;
 import com.stahovskyi.movieland.service.dto.CurrencyType;
 import org.springframework.http.MediaType;
+import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.List;
-import java.util.Objects;
 
+import static java.util.Optional.ofNullable;
+
+@Service
 public class CurrencyConvertorService implements CurrencyService {
 
     private static final String NBU_URI = "https://bank.gov.ua/NBUStatService/v1/statdirectory/exchangenew?json";
-
     private final WebClient nbuClient = WebClient.create(NBU_URI);
-
+    private final static int SCALE = 2;
 
     @Override
-    public Movie convertCurrency(Movie movie, CurrencyType currencyType) {
+    public Movie convertPrice(Movie movie, CurrencyType currencyType) {
+        if (currencyType != CurrencyType.UAH) {
+            List<Currency> currenciesList = getCurrentExchangeRate();
 
-        if (currencyType.equals(CurrencyType.UAH)) {
+            double rate = getRate(currenciesList, currencyType);
+            double price = convert(rate, movie.getPrice());
+
+            movie.setPrice(price);
             return movie;
         }
-/*
-        double actualRate = getExchangeRate(currencyType);
-
-        double convertedPrice = convert(actualRate, movie.getPrice());
-
-        movie.setPrice(convertedPrice);*/
-
         return movie;
-
     }
 
-    private List<Currency> getExchangeRate(CurrencyType currencyType) {
-       Mono<Currency[]> response = nbuClient.get()
-               .accept(MediaType.APPLICATION_JSON)
-               .retrieve()
-               .bodyToMono(Currency[].class).log();
-       Currency[] currencies = response.block();
+    public List<Currency> getCurrentExchangeRate() {
+        Mono<Currency[]> response = nbuClient.get()
+                .accept(MediaType.APPLICATION_JSON)
+                .retrieve()
+                .bodyToMono(Currency[].class).log();
 
-        return List.of(Objects.requireNonNull(currencies));
-
+        Currency[] currencies = response.block();
+        return List.of(ofNullable(currencies).orElseThrow());
     }
+
+    private double getRate(List<Currency> currencies, CurrencyType currencyType) {
+        return currencies.stream()
+                .filter(currency -> currency.getCurrencyType().equals(currencyType.getType()))
+                .map(Currency::getRate)
+                .findFirst()
+                .orElseThrow();
+    }
+
+    private double convert(double rate, double moviePrice) {
+        return new BigDecimal(moviePrice / rate)
+                .setScale(SCALE, RoundingMode.CEILING)
+                .doubleValue();
+    }
+
 }
 

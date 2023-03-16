@@ -5,7 +5,6 @@ import com.github.database.rider.spring.api.DBRider;
 import com.stahovskyi.movieland.AbstractWebITest;
 import com.stahovskyi.movieland.config.TestConfigurationToCountAllQueries;
 import com.vladmihalcea.sql.SQLStatementCountValidator;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -17,8 +16,6 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-
-@Disabled
 @DBRider
 @AutoConfigureMockMvc
 @Import({
@@ -30,7 +27,7 @@ class GenreControllerITest extends AbstractWebITest {
 
     @Test
     @DataSet(value = "datasets/genre/genre_dataset.yml")
-    @DisplayName("when GetAll then All Genres And Ok Status Returned")
+    @DisplayName("when Get All then All Genres And Ok Status Returned")
     void whenGetAll_ThenAllGenres_AndOkStatusReturned() throws Exception {
 
         SQLStatementCountValidator.reset();
@@ -42,7 +39,6 @@ class GenreControllerITest extends AbstractWebITest {
                         .json(getResponseAsString("response/genre/genre_response.json")));
 
         assertSelectCount(1);
-
     }
 
 }

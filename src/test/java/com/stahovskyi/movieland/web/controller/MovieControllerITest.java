@@ -5,6 +5,7 @@ import com.github.database.rider.spring.api.DBRider;
 import com.stahovskyi.movieland.AbstractWebITest;
 import com.stahovskyi.movieland.config.TestConfigurationToCountAllQueries;
 import com.stahovskyi.movieland.web.controller.request.MovieRequest;
+import com.stahovskyi.movieland.web.controller.request.SortDirection;
 import com.vladmihalcea.sql.SQLStatementCountValidator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -16,6 +17,7 @@ import static com.vladmihalcea.sql.SQLStatementCountValidator.assertSelectCount;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @DBRider
@@ -25,9 +27,10 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 class MovieControllerITest extends AbstractWebITest {
 
     private static final String GET_ALL_ENDPOINT = "/api/v1/movie";
-
-    private static final String GET_BY_ID_ENDPOINT = "/api/v1/movie/2";
+    private static final String GET_RANDOM_ENDPOINT = "/api/v1/movie/random";
+    private static final String GET_BY_MOVIE_ID_ENDPOINT = "/api/v1/movie/2?currency=UAH";
     private static final String GET_ALL_BY_GENRE_ID_ENDPOINT = "/api/v1/movie/genre/1";
+    private static final String GET_MOVIE_BY_NOT_EXISTING_ID_ENDPOINT = "/api/v1/movie/101";
 
 
     @Test
@@ -54,7 +57,7 @@ class MovieControllerITest extends AbstractWebITest {
 
         SQLStatementCountValidator.reset();
 
-        var movieRequest = new MovieRequest(null, "desc");
+        var movieRequest = new MovieRequest(null, SortDirection.DESC);
 
         mockMvc.perform(post(GET_ALL_ENDPOINT)
                         .content(objectMapper.writeValueAsString(movieRequest))
@@ -64,7 +67,6 @@ class MovieControllerITest extends AbstractWebITest {
                         .json(getResponseAsString("response/movie/sorted_movie_response.json")));
 
         assertSelectCount(1);
-
     }
 
     @Test
@@ -75,7 +77,7 @@ class MovieControllerITest extends AbstractWebITest {
 
         SQLStatementCountValidator.reset();
 
-        var movieRequest = new MovieRequest("desc", null);
+        var movieRequest = new MovieRequest(SortDirection.ASC, null);
 
         mockMvc.perform(post(GET_ALL_ENDPOINT)
                         .content(objectMapper.writeValueAsString(movieRequest))
@@ -104,6 +106,7 @@ class MovieControllerITest extends AbstractWebITest {
         assertSelectCount(1);
     }
 
+
     @Test
     @DataSet(value = "datasets/movie/movie_by_id_dataset.yml")
     @DisplayName("when Get Movie By Id then Movie With Country Genre Review and Ok Status Returned")
@@ -111,13 +114,40 @@ class MovieControllerITest extends AbstractWebITest {
 
         SQLStatementCountValidator.reset();
 
-        mockMvc.perform(get(GET_BY_ID_ENDPOINT)
+        mockMvc.perform(get(GET_BY_MOVIE_ID_ENDPOINT)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(content()
                         .json(getResponseAsString("response/movie/movie_by_id_response.json")));
 
-        assertSelectCount(6);  // todo --> need fix N + 1
+        assertSelectCount(6);
+    }
+
+    @Test
+    @DataSet(value = "datasets/movie/movie_dataset.yml")
+    @DisplayName("when Get Movie By Not Existing Id then Not Found Returned")
+    void whenGetMovieById_withNotExistingId_thenNotFoundReturned() throws Exception {
+
+        mockMvc.perform(get(GET_MOVIE_BY_NOT_EXISTING_ID_ENDPOINT)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isNotFound());
+    }
+
+    @Test
+    @DataSet(value = "datasets/movie/movie_dataset.yml")
+    @DisplayName("when Get Random then Random Movie and Ok Status Returned")
+    void whenGetRandom_thenRandomMovie_andOkStatusReturned() throws Exception {
+
+        SQLStatementCountValidator.reset();
+
+        mockMvc.perform(get(GET_RANDOM_ENDPOINT)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$").isNotEmpty())
+                .andExpect(jsonPath("$").isArray())
+                .andExpect(jsonPath("$[3]").doesNotExist());
+
+        assertSelectCount(1);
     }
 
 }

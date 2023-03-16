@@ -16,7 +16,7 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 @Service
 @RequiredArgsConstructor
-public class DefaultGenreServiceImpl implements GenreService {
+public class DefaultGenreService implements GenreService {
 
     private final GenreRepository movieGenreRepository;
 
@@ -29,7 +29,7 @@ public class DefaultGenreServiceImpl implements GenreService {
 
     }
 
-    @Scheduled(initialDelayString = "${initialDelay.in.hours}", fixedDelayString = "${fixedDelay.in.hours}",
+    @Scheduled(initialDelayString = "${scheduled.initialDelay.hours}", fixedDelayString = "${scheduled.fixedDelay.hours}",
             timeUnit = TimeUnit.HOURS)
     @CacheEvict(cacheNames = "genre_cache", allEntries = true)
     public void genreCacheEvict() {

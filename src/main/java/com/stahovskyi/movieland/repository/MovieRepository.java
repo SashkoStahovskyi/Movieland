@@ -12,7 +12,4 @@ public interface MovieRepository extends JpaRepository<Movie, Integer> {
 
     Optional<List<Movie>> getAllByGenreId(int genreId);
 
-    /*@EntityGraph(attributePaths = "users")
-    @Query(value = "SELECT m FROM movie WHERE id:movieId ")
-    Optional<Movie> findById(Integer movieId);*/
 }
