@@ -37,5 +37,4 @@ public class Review {
     @JoinColumn(name = "movie_id", referencedColumnName = "id")
     private Movie movie;
 
-
 }

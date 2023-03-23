@@ -12,6 +12,7 @@ import lombok.Setter;
 public class UserDto {
 
     private int id;
+
     private String nickName;
 
 }

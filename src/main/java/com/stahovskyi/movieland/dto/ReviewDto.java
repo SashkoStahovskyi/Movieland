@@ -12,7 +12,9 @@ import lombok.Setter;
 public class ReviewDto {
 
     private int id;
+
     private UserDto user;
+
     private String description;
 
 }

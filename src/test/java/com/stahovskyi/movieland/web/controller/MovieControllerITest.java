@@ -4,8 +4,8 @@ import com.github.database.rider.core.api.dataset.DataSet;
 import com.github.database.rider.spring.api.DBRider;
 import com.stahovskyi.movieland.AbstractWebITest;
 import com.stahovskyi.movieland.config.TestConfigurationToCountAllQueries;
-import com.stahovskyi.movieland.web.controller.request.MovieRequest;
-import com.stahovskyi.movieland.web.controller.request.SortDirection;
+import com.stahovskyi.movieland.service.entity.request.MovieRequest;
+import com.stahovskyi.movieland.service.entity.common.SortDirection;
 import com.vladmihalcea.sql.SQLStatementCountValidator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -21,7 +21,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @DBRider
-@AutoConfigureMockMvc
+@AutoConfigureMockMvc(addFilters = false)
 @Import({
         TestConfigurationToCountAllQueries.class})
 class MovieControllerITest extends AbstractWebITest {

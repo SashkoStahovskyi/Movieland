@@ -16,3 +16,6 @@ server:
 logging:
   level:
     com.com.stahovskyi: DEBUG
+
+
+

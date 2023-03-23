@@ -1,4 +1,4 @@
-package com.stahovskyi.movieland.service.util;
+package com.stahovskyi.movieland.utils;
 
 import com.stahovskyi.movieland.entity.Movie;
 

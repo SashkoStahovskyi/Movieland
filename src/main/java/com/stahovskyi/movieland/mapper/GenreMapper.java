@@ -6,9 +6,8 @@ import org.mapstruct.Mapper;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring")
+@Mapper
 public interface GenreMapper {
-
 
     List<GenreDto> toGenreDtoList(List<Genre> all);
 

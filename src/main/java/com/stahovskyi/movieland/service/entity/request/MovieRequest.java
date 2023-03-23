@@ -1,5 +1,6 @@
-package com.stahovskyi.movieland.web.controller.request;
+package com.stahovskyi.movieland.service.entity.request;
 
+import com.stahovskyi.movieland.service.entity.common.SortDirection;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;

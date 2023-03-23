@@ -1,4 +1,4 @@
-package com.stahovskyi.movieland.service.currency.entity;
+package com.stahovskyi.movieland.service.entity.common;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;

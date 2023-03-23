@@ -1,13 +1,14 @@
 package com.stahovskyi.movieland.service.currency;
 
 import com.stahovskyi.movieland.entity.Movie;
-import com.stahovskyi.movieland.service.currency.entity.Currency;
-import com.stahovskyi.movieland.service.dto.CurrencyType;
+import com.stahovskyi.movieland.service.entity.common.Currency;
+import com.stahovskyi.movieland.service.entity.common.CurrencyType;
+import com.stahovskyi.movieland.service.impl.CurrencyConvertorService;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.TestConstructor;
 
 import java.util.List;
 
@@ -15,11 +16,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
+@TestConstructor(autowireMode = TestConstructor.AutowireMode.ALL)
 class CurrencyConvertorServiceITest {
 
     private final static int EXPECTED_NUMBER_OF_CURRENCIES = 61;
     private final static double MOVIE_PRICE = 150.0;
-    @Autowired
     private CurrencyConvertorService currencyService;
     private List<Currency> currencyList;
 

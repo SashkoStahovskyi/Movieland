@@ -1,11 +1,15 @@
 package com.stahovskyi.movieland.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -23,7 +27,6 @@ public class User {
     @SequenceGenerator(name = "user_id_generator", sequenceName = "user_id_sequence")
     private int id;
 
-    @JsonIgnore
     @Column(name = "nickname")
     private String nickName;
 
@@ -31,7 +34,25 @@ public class User {
     @Column(name = "email")
     private String email;
 
+    @JsonIgnore
     @Column(name = "password")
     private String password;
+
+    @JsonIgnore
+    @Enumerated(value = EnumType.STRING)
+    @Column(name = "role")
+    private UserRole role;
+
+
+    @Getter
+    @AllArgsConstructor
+    public enum UserRole {
+
+        USER("USER"),
+
+        ADMIN("ADMIN");
+
+        private final String name;
+    }
 
 }

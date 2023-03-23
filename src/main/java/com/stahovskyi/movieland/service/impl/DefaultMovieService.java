@@ -5,8 +5,8 @@ import com.stahovskyi.movieland.exception.NotFoundException;
 import com.stahovskyi.movieland.repository.MovieRepository;
 import com.stahovskyi.movieland.service.CurrencyService;
 import com.stahovskyi.movieland.service.MovieService;
-import com.stahovskyi.movieland.service.dto.CurrencyType;
-import com.stahovskyi.movieland.web.controller.request.MovieRequest;
+import com.stahovskyi.movieland.service.entity.common.CurrencyType;
+import com.stahovskyi.movieland.service.entity.request.MovieRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-import static com.stahovskyi.movieland.service.util.RandomUtil.chooseRandom;
+import static com.stahovskyi.movieland.utils.RandomUtil.chooseRandom;
 import static java.util.Objects.nonNull;
 import static org.springframework.data.domain.Sort.Direction.fromString;
 

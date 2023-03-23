@@ -4,12 +4,12 @@ import com.github.database.rider.core.api.dataset.DataSet;
 import com.github.database.rider.spring.api.DBRider;
 import com.stahovskyi.movieland.AbstractBaseITest;
 import com.stahovskyi.movieland.entity.Movie;
-import com.stahovskyi.movieland.service.dto.CurrencyType;
-import com.stahovskyi.movieland.web.controller.request.MovieRequest;
-import com.stahovskyi.movieland.web.controller.request.SortDirection;
+import com.stahovskyi.movieland.service.entity.common.CurrencyType;
+import com.stahovskyi.movieland.service.entity.request.MovieRequest;
+import com.stahovskyi.movieland.service.entity.common.SortDirection;
+import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
@@ -17,6 +17,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
 
 @DBRider
+@RequiredArgsConstructor
 public class DefaultMovieServiceITest extends AbstractBaseITest {
 
     private final static int EXPECTED_MOVIE_BY_GENRE_COUNT = 2;
@@ -25,8 +26,7 @@ public class DefaultMovieServiceITest extends AbstractBaseITest {
     private final static int GENRE_ID = 1;
     private final static int MOVIE_ID = 6;
 
-    @Autowired
-    private DefaultMovieService movieService;
+    private final DefaultMovieService movieService;
 
     @Test
     @DBRider

@@ -1,4 +1,4 @@
-package com.stahovskyi.movieland.web.controller.request;
+package com.stahovskyi.movieland.service.entity.common;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

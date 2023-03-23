@@ -36,8 +36,6 @@ public class DefaultGenreCache implements CacheService {
     private void update() {
         genreMap.put(GENRES_KEY, genreRepository.findAll());
         log.info("Update genres in cache! Get {} item!", genreMap.get(GENRES_KEY).size());
-
     }
-
 
 }

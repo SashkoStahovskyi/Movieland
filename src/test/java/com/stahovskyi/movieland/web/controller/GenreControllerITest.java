@@ -17,7 +17,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @DBRider
-@AutoConfigureMockMvc
+@AutoConfigureMockMvc(addFilters = false)
 @Import({
         TestConfigurationToCountAllQueries.class})
 class GenreControllerITest extends AbstractWebITest {

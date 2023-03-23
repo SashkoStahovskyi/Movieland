@@ -1,9 +1,9 @@
-package com.stahovskyi.movieland.service.currency;
+package com.stahovskyi.movieland.service.impl;
 
 import com.stahovskyi.movieland.entity.Movie;
 import com.stahovskyi.movieland.service.CurrencyService;
-import com.stahovskyi.movieland.service.currency.entity.Currency;
-import com.stahovskyi.movieland.service.dto.CurrencyType;
+import com.stahovskyi.movieland.service.entity.common.Currency;
+import com.stahovskyi.movieland.service.entity.common.CurrencyType;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;

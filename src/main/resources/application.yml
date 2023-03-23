@@ -13,7 +13,7 @@ spring:
   flyway:
     enabled: true
 
-#  CacheEvict Schedule
+#  Genre Cache Evict Schedule
 scheduled:
   initialDelay:
     hours: 4

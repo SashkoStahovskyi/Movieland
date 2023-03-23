@@ -1,11 +1,11 @@
 package com.stahovskyi.movieland.web.controller;
 
-import com.stahovskyi.movieland.dto.DetailedMovieDto;
+import com.stahovskyi.movieland.service.dto.response.DetailedMovieDto;
 import com.stahovskyi.movieland.dto.MovieDto;
 import com.stahovskyi.movieland.mapper.MovieMapper;
 import com.stahovskyi.movieland.service.MovieService;
-import com.stahovskyi.movieland.service.dto.CurrencyType;
-import com.stahovskyi.movieland.web.controller.request.MovieRequest;
+import com.stahovskyi.movieland.service.entity.common.CurrencyType;
+import com.stahovskyi.movieland.service.entity.request.MovieRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,7 +24,6 @@ import java.util.List;
 public class MovieController {
 
     private final MovieService movieService;
-
     private final MovieMapper movieMapper;
 
 
