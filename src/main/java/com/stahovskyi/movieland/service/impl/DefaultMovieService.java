@@ -12,6 +12,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.domain.Sort.Order;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -34,6 +35,7 @@ public class DefaultMovieService implements MovieService {
         return movieRepository.findAll();
     }
 
+    @Transactional(readOnly = true)
     @Override
     public List<Movie> getAll(MovieRequest movieRequest) {
 
@@ -46,6 +48,7 @@ public class DefaultMovieService implements MovieService {
                 : movieRepository.findAll(Sort.by(fromString(movieRequest.getRate().getDirectional()), RATING_PROPERTIES));
     }
 
+    @Transactional(readOnly = true)
     @Override
     public Movie getById(int movieId, CurrencyType currencyType) {
         return movieRepository.findById(movieId)
@@ -53,11 +56,13 @@ public class DefaultMovieService implements MovieService {
                 .orElseThrow(() -> new NotFoundException(movieId));
     }
 
+    @Transactional(readOnly = true)
     @Override
     public List<Movie> getRandom() {
         return chooseRandom(movieRepository.findAll());
     }
 
+    @Transactional(readOnly = true)
     @Override
     public List<Movie> getAllByGenreId(int genreId) {
         return movieRepository.getAllByGenreId(genreId)
