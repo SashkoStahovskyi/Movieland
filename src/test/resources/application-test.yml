@@ -15,7 +15,7 @@ server:
 
 logging:
   level:
-    com.com.stahovskyi: DEBUG
+    com.com.stahovskyi: TRACE
 
 
 

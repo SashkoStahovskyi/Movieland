@@ -1,9 +1,9 @@
 package com.stahovskyi.movieland.service.impl;
 
-import com.stahovskyi.movieland.service.entity.response.Login;
 import com.stahovskyi.movieland.exception.NotFoundException;
 import com.stahovskyi.movieland.service.SecurityService;
 import com.stahovskyi.movieland.service.UserService;
+import com.stahovskyi.movieland.service.entity.response.Login;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -22,7 +22,7 @@ public class LoginService {
     public Login getLogin(String email, String password) {
         String token = getAuthentication(email, password).getBody();
         String nickname = userService.getNickname(email);
-        return new Login(token, nickname);
+        return new Login(nickname, token);
     }
 
     private ResponseEntity<String> getAuthentication(String email, String password) {

@@ -41,7 +41,8 @@ class MovieControllerITest extends AbstractWebITest {
 
         SQLStatementCountValidator.reset();
 
-        mockMvc.perform(get(GET_ALL_ENDPOINT)
+        mockMvc
+                .perform(get(GET_ALL_ENDPOINT)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(content()
@@ -59,7 +60,8 @@ class MovieControllerITest extends AbstractWebITest {
 
         var movieRequest = new MovieRequest(null, SortDirection.DESC);
 
-        mockMvc.perform(post(GET_ALL_ENDPOINT)
+        mockMvc
+                .perform(post(GET_ALL_ENDPOINT)
                         .content(objectMapper.writeValueAsString(movieRequest))
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
@@ -79,7 +81,8 @@ class MovieControllerITest extends AbstractWebITest {
 
         var movieRequest = new MovieRequest(SortDirection.ASC, null);
 
-        mockMvc.perform(post(GET_ALL_ENDPOINT)
+        mockMvc
+                .perform(post(GET_ALL_ENDPOINT)
                         .content(objectMapper.writeValueAsString(movieRequest))
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
@@ -97,7 +100,8 @@ class MovieControllerITest extends AbstractWebITest {
 
         SQLStatementCountValidator.reset();
 
-        mockMvc.perform(get(GET_ALL_BY_GENRE_ID_ENDPOINT)
+        mockMvc
+                .perform(get(GET_ALL_BY_GENRE_ID_ENDPOINT)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(content()
@@ -114,7 +118,8 @@ class MovieControllerITest extends AbstractWebITest {
 
         SQLStatementCountValidator.reset();
 
-        mockMvc.perform(get(GET_BY_MOVIE_ID_ENDPOINT)
+        mockMvc
+                .perform(get(GET_BY_MOVIE_ID_ENDPOINT)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(content()
@@ -128,7 +133,8 @@ class MovieControllerITest extends AbstractWebITest {
     @DisplayName("when Get Movie By Not Existing Id then Not Found Returned")
     void whenGetMovieById_withNotExistingId_thenNotFoundReturned() throws Exception {
 
-        mockMvc.perform(get(GET_MOVIE_BY_NOT_EXISTING_ID_ENDPOINT)
+        mockMvc
+                .perform(get(GET_MOVIE_BY_NOT_EXISTING_ID_ENDPOINT)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isNotFound());
     }
@@ -140,7 +146,8 @@ class MovieControllerITest extends AbstractWebITest {
 
         SQLStatementCountValidator.reset();
 
-        mockMvc.perform(get(GET_RANDOM_ENDPOINT)
+        mockMvc
+                .perform(get(GET_RANDOM_ENDPOINT)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$").isNotEmpty())

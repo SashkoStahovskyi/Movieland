@@ -32,7 +32,8 @@ class GenreControllerITest extends AbstractWebITest {
 
         SQLStatementCountValidator.reset();
 
-        mockMvc.perform(get(GET_ALL_ENDPOINT)
+        mockMvc
+                .perform(get(GET_ALL_ENDPOINT)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(content()

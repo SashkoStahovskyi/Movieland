@@ -1,0 +1,12 @@
+USERS:
+  - ID: 1
+    NICKNAME: "Джесси Паттерсон"
+    EMAIL: "jessie.patterson68@example.com"
+    PASSWORD: "tommy"
+    ROLE: "USER"
+
+  - ID: 3
+    NICKNAME: "Дарлин Эдвардс"
+    EMAIL: "darlene.edwards15@example.com"
+    PASSWORD: "bricks"
+    ROLE: "USER"
