@@ -9,4 +9,6 @@ public interface GenreService {
 
     List<Genre> getAll();
 
+    List<Genre> findAllByIdIn(List<Integer> genresId);
+
 }

@@ -9,6 +9,6 @@ import java.util.List;
 @Mapper
 public interface GenreMapper {
 
-    List<GenreDto> toGenreDtoList(List<Genre> all);
+    List<GenreDto> toGenreDtoList(List<Genre> genreList);
 
 }

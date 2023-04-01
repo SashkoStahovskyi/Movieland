@@ -1,6 +1,8 @@
 package com.stahovskyi.movieland.service;
 
+import com.stahovskyi.movieland.dto.MovieDto;
 import com.stahovskyi.movieland.entity.Movie;
+import com.stahovskyi.movieland.service.dto.request.MovieRequestDto;
 import com.stahovskyi.movieland.service.entity.common.CurrencyType;
 import com.stahovskyi.movieland.service.entity.request.MovieRequest;
 
@@ -18,4 +20,5 @@ public interface MovieService {
 
     List<Movie> getRandom();
 
+    Movie add(MovieRequestDto movieRequestDto);
 }

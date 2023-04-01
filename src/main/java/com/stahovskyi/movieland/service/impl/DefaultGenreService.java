@@ -19,7 +19,7 @@ import java.util.concurrent.TimeUnit;
 @RequiredArgsConstructor
 public class DefaultGenreService implements GenreService {
 
-    private final GenreRepository movieGenreRepository;
+    private final GenreRepository genreRepository;
 
 
     @Transactional(readOnly = true)
@@ -27,8 +27,13 @@ public class DefaultGenreService implements GenreService {
     @Override
     public List<Genre> getAll() {
         log.info(" Update genres in cache ! ");
-        return movieGenreRepository.findAll();
+        return genreRepository.findAll();
 
+    }
+
+    @Override
+    public List<Genre> findAllByIdIn(List<Integer> genresId) {
+        return genreRepository.findAllByIdIn(genresId);
     }
 
     @Scheduled(initialDelayString = "${scheduled.initialDelay.hours}", fixedDelayString = "${scheduled.fixedDelay.hours}",

@@ -1,10 +1,16 @@
 package com.stahovskyi.movieland.service.impl;
 
+import com.stahovskyi.movieland.entity.Country;
+import com.stahovskyi.movieland.entity.Genre;
 import com.stahovskyi.movieland.entity.Movie;
 import com.stahovskyi.movieland.exception.NotFoundException;
+import com.stahovskyi.movieland.mapper.MovieMapper;
+import com.stahovskyi.movieland.repository.CountryRepository;
+import com.stahovskyi.movieland.repository.GenreRepository;
 import com.stahovskyi.movieland.repository.MovieRepository;
 import com.stahovskyi.movieland.service.CurrencyService;
 import com.stahovskyi.movieland.service.MovieService;
+import com.stahovskyi.movieland.service.dto.request.MovieRequestDto;
 import com.stahovskyi.movieland.service.entity.common.CurrencyType;
 import com.stahovskyi.movieland.service.entity.request.MovieRequest;
 import lombok.RequiredArgsConstructor;
@@ -28,7 +34,25 @@ public class DefaultMovieService implements MovieService {
     private final static String PRICE_PROPERTIES = "price";
     private final MovieRepository movieRepository;
     private final CurrencyService currencyService;
+    private final MovieMapper movieMapper;
 
+    private final CountryRepository countryRepository;
+
+    private final GenreRepository genreRepository;
+
+
+    @Transactional
+    @Override
+    public Movie add(MovieRequestDto movieRequestDto) {
+        List<Country> countries = countryRepository.findAllByIdIn(movieRequestDto.getCountry());
+        List<Genre> genres = genreRepository.findAllByIdIn(movieRequestDto.getCountry());
+
+        Movie movie = movieMapper.toMovie(movieRequestDto);
+        movie.setCountries(countries);
+        movie.setGenre(genres);
+
+        return movieRepository.save(movie);
+    }
 
     @Override
     public List<Movie> getAll() {
@@ -61,6 +85,7 @@ public class DefaultMovieService implements MovieService {
     public List<Movie> getRandom() {
         return chooseRandom(movieRepository.findAll());
     }
+
 
     @Transactional(readOnly = true)
     @Override

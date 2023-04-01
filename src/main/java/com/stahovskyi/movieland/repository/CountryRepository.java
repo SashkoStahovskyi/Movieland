@@ -1,13 +1,14 @@
 package com.stahovskyi.movieland.repository;
 
-import com.stahovskyi.movieland.entity.Genre;
+import com.stahovskyi.movieland.entity.Country;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
-public interface GenreRepository extends JpaRepository<Genre, Integer> {
+public interface CountryRepository extends JpaRepository<Country, Integer> {
 
-    List<Genre> findAllByIdIn(List<Integer> genresId);
+    List<Country> findAllByIdIn(List<Integer> countriesId);
+
 }

@@ -1,13 +1,15 @@
 package com.stahovskyi.movieland.web.controller;
 
-import com.stahovskyi.movieland.service.dto.response.DetailedMovieDto;
 import com.stahovskyi.movieland.dto.MovieDto;
 import com.stahovskyi.movieland.mapper.MovieMapper;
 import com.stahovskyi.movieland.service.MovieService;
+import com.stahovskyi.movieland.service.dto.request.MovieRequestDto;
+import com.stahovskyi.movieland.service.dto.response.DetailedMovieDto;
 import com.stahovskyi.movieland.service.entity.common.CurrencyType;
 import com.stahovskyi.movieland.service.entity.request.MovieRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -55,6 +57,14 @@ public class MovieController {
     protected List<MovieDto> getAllByGenreId(@PathVariable("genreId")
                                              int genreId) {
         return movieMapper.toMovieDtoList(movieService.getAllByGenreId(genreId));
+    }
+
+
+    @PostMapping
+    @PreAuthorize("hasAnyRole('ADMIN')")
+    protected MovieDto add(@RequestBody MovieRequestDto movieRequestDto) {
+        return movieMapper.toMovieDto(movieService.add(movieRequestDto));
+
     }
 
 }

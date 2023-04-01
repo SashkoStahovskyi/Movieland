@@ -1,12 +1,14 @@
 package com.stahovskyi.movieland.service.impl;
 
 import com.github.database.rider.core.api.dataset.DataSet;
+import com.github.database.rider.core.api.dataset.ExpectedDataSet;
 import com.github.database.rider.spring.api.DBRider;
 import com.stahovskyi.movieland.AbstractBaseITest;
 import com.stahovskyi.movieland.entity.Movie;
+import com.stahovskyi.movieland.service.dto.request.MovieRequestDto;
 import com.stahovskyi.movieland.service.entity.common.CurrencyType;
-import com.stahovskyi.movieland.service.entity.request.MovieRequest;
 import com.stahovskyi.movieland.service.entity.common.SortDirection;
+import com.stahovskyi.movieland.service.entity.request.MovieRequest;
 import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -106,4 +108,29 @@ public class DefaultMovieServiceITest extends AbstractBaseITest {
         assertThat(movie.getId()).isEqualTo(EXPECTED_MOVIE_ID);
     }
 
+    @Test
+    @DataSet(value = "datasets/movie/movie_dataset.yml")
+    @ExpectedDataSet(value = "datasets/movie/expected_add_movie_dataset.yml")
+    @DisplayName("whenAddMovie_thenMovieAdded_andMovieDtoReturned")
+    void whenAddMovie_thenMovieAdded_andMovieDtoReturned() {
+        // Given
+        MovieRequestDto movieRequestDto = MovieRequestDto.builder()
+                .nameRussian("Дух Часу")
+                .nameNative("The spirit of time")
+                .yearOfRelease(2012)
+                .description("Дивовижний та заворожуючий фільм")
+                .picturePath("https://images-na.ssl-images-amazon.com/images/.jpg")
+                .price(155.5)
+                .countries(List.of(1, 2, 3))
+                .genres(List.of(1, 2))
+                .build();
+        // When
+        Movie actualMovie = movieService.add(movieRequestDto);
+        // Then
+    /*    assertThat(actualMovie)
+                .isNotNull()
+                .isExactlyInstanceOf(Movie.class)
+                .extracting*/
+
+    }
 }
