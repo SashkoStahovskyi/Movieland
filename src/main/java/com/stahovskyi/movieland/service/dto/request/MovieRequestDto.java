@@ -29,10 +29,8 @@ public class MovieRequestDto {
 
     private String picturePath;
 
-    @JsonIgnore
     private List<Integer> countries;
 
-    @JsonIgnore
     private List<Integer> genres;
 
 }

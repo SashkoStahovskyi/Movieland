@@ -9,13 +9,15 @@ spring:
       hibernate:
         format_sql: true
         show_sql: true
+        hbm2ddl:
+          auto: create
 
 server:
   port: 9876
 
 logging:
   level:
-    com.com.stahovskyi: TRACE
+    com.com.stahovskyi: DEBUG
 
 
 

@@ -44,8 +44,8 @@ public class DefaultMovieService implements MovieService {
     @Transactional
     @Override
     public Movie add(MovieRequestDto movieRequestDto) {
-        List<Country> countries = countryRepository.findAllByIdIn(movieRequestDto.getCountry());
-        List<Genre> genres = genreRepository.findAllByIdIn(movieRequestDto.getCountry());
+        List<Country> countries = countryRepository.findAllByIdIn(movieRequestDto.getCountries());
+        List<Genre> genres = genreRepository.findAllByIdIn(movieRequestDto.getCountries());
 
         Movie movie = movieMapper.toMovie(movieRequestDto);
         movie.setCountries(countries);

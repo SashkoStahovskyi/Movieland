@@ -26,13 +26,11 @@ public interface MovieMapper {
     @Mapping(target = "yearOfRelease", source = "yearOfRelease", qualifiedByName = "year")
     @Mapping(target = "countries", ignore = true)
     @Mapping(target = "genre", ignore = true)
-    @Mapping(target = "vote", ignore = true)
-    @Mapping(target = "rate", ignore = true)
     Movie toMovie(MovieRequestDto movieRequestDto);
 
     @Named("year")
-    default LocalDate mapYearToLocalDate(String year) {
-        return LocalDate.of(LocalDate.parse(year).getYear(), 1, 1);
+    default LocalDate mapYearToLocalDate(int year) {
+        return LocalDate.of(year, 1, 1);
     }
 
 }

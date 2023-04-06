@@ -16,8 +16,8 @@ INSERT INTO "users"(id, nickname, email, password)
 VALUES (8, 'Амелия Кэннеди', 'amelia.kennedy58@example.com', encode('beaker',  'escape'));
 INSERT INTO "users"(id, nickname, email, password)
 VALUES (9, 'Айда Дэвис', 'ida.davis80@example.com', encode('pepsi1',  'escape'));
-INSERT INTO "users"(id, nickname, email, password)
-VALUES (10, 'Джесси Паттерсон', 'jessie.patterson68@example.com', encode('tommy',  'escape'));
+INSERT INTO "users"(id, nickname, email, password, role)
+VALUES (10, 'Джесси Паттерсон', 'jessie.patterson68@example.com', encode('tommy',  'escape'), 'USER');
 INSERT INTO "users"(id, nickname, email, password)
 VALUES (11, 'Деннис Крейг', 'dennis.craig82@example.com', encode('coldbeer',  'escape'));
 

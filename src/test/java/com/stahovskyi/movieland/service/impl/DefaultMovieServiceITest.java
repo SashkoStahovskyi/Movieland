@@ -13,6 +13,7 @@ import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -109,7 +110,8 @@ public class DefaultMovieServiceITest extends AbstractBaseITest {
     }
 
     @Test
-    @DataSet(value = "datasets/movie/movie_dataset.yml")
+    @DataSet(value = "datasets/movie/movie_dataset.yml", cleanAfter = true,
+            cleanBefore = true, skipCleaningFor = "flyway_schema_history")
     @ExpectedDataSet(value = "datasets/movie/expected_add_movie_dataset.yml")
     @DisplayName("whenAddMovie_thenMovieAdded_andMovieDtoReturned")
     void whenAddMovie_thenMovieAdded_andMovieDtoReturned() {
@@ -121,16 +123,24 @@ public class DefaultMovieServiceITest extends AbstractBaseITest {
                 .description("Дивовижний та заворожуючий фільм")
                 .picturePath("https://images-na.ssl-images-amazon.com/images/.jpg")
                 .price(155.5)
-                .countries(List.of(1, 2, 3))
+                .countries(List.of(1, 2))
                 .genres(List.of(1, 2))
                 .build();
         // When
         Movie actualMovie = movieService.add(movieRequestDto);
         // Then
-    /*    assertThat(actualMovie)
-                .isNotNull()
-                .isExactlyInstanceOf(Movie.class)
-                .extracting*/
+        assertAll(
+                () -> assertThat(actualMovie).isNotNull(),
+                () -> assertThat(actualMovie.getId()).isEqualTo(1),
+                () -> assertThat(actualMovie.getNameRussian()).isEqualTo("Дух Часу"),
+                () -> assertThat(actualMovie.getNameNative()).isEqualTo("The spirit of time"),
+                () -> assertThat(actualMovie.getDescription()).isEqualTo("Дивовижний та заворожуючий фільм"),
+                () -> assertThat(actualMovie.getPicturePath()).isEqualTo("https://images-na.ssl-images-amazon.com/images/.jpg"),
 
+                () -> assertThat(actualMovie.getYearOfRelease()).isEqualTo(LocalDate.of(2012, 1, 1)),
+                () -> assertThat(actualMovie.getRating()).isEqualTo(0.0),
+                () -> assertThat(actualMovie.getPrice()).isEqualTo(155.5),
+                () -> assertThat(actualMovie.getVotes()).isEqualTo(0));
     }
+
 }

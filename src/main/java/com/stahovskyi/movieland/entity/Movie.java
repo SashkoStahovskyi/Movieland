@@ -31,8 +31,8 @@ import java.util.List;
 public class Movie {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "movie_id_generator")
-    @SequenceGenerator(name = "movie_id_generator", sequenceName = "movie_id_sequence")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "movies_id_generator")
+    @SequenceGenerator(name = "movies_id_generator", sequenceName = "movies_id_sequence")
     @Column(name = "id")
     private int id;
 

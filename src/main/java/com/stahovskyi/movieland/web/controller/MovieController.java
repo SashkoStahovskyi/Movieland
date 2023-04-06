@@ -29,17 +29,17 @@ public class MovieController {
     private final MovieMapper movieMapper;
 
 
-    @GetMapping
+ /*   @GetMapping
     protected List<MovieDto> getAll() {
         return movieMapper.toMovieDtoList(movieService.getAll());
     }
 
-    @PostMapping
+    @GetMapping
     protected List<MovieDto> getAll(@RequestBody(required = false)
                                     MovieRequest request) {
         return movieMapper.toMovieDtoList(movieService.getAll(request));
 
-    }
+    }*/
 
     @GetMapping(path = "/{movieId}")
     protected DetailedMovieDto getById(@PathVariable(value = "movieId") int movieId,
