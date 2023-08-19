@@ -22,7 +22,7 @@ public class CurrencyConvertorService implements CurrencyService {
     private final WebClient nbuClient = WebClient.create(NBU_URI);
     private static final int SCALE = 2;
 
-    @Override   // TODO RETRY IMPLEMENT
+    @Override
     public Movie convertPrice(Movie movie, CurrencyType currencyType) {
         if (currencyType != CurrencyType.UAH) {
             List<Currency> currenciesList = getCurrentExchangeRate();
@@ -36,7 +36,7 @@ public class CurrencyConvertorService implements CurrencyService {
         return movie;
     }
 
-    public List<Currency> getCurrentExchangeRate() {
+    public List<Currency> getCurrentExchangeRate() { // todo retry implement
         Mono<Currency[]> response = nbuClient.get()
                 .accept(MediaType.APPLICATION_JSON)
                 .retrieve()
