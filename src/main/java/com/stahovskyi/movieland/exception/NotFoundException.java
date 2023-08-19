@@ -14,6 +14,7 @@ public class NotFoundException extends RuntimeException {
 
     }
 
+
     public NotFoundException(String email) {
         super(String.format(NOT_FOUND_BY_EMAIL_MASSAGE, email));
 

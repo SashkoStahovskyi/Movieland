@@ -28,12 +28,16 @@ public class DefaultGenreService implements GenreService {
     public List<Genre> getAll() {
         log.info(" Update genres in cache ! ");
         return genreRepository.findAll();
-
     }
 
     @Override
     public List<Genre> findAllByIdIn(List<Integer> genresId) {
         return genreRepository.findAllByIdIn(genresId);
+    }
+
+    @Override
+    public List<Genre> findByMovieId(int movieId) {
+        return genreRepository.findAllByMovieId(movieId);
     }
 
     @Scheduled(initialDelayString = "${scheduled.initialDelay.hours}", fixedDelayString = "${scheduled.fixedDelay.hours}",

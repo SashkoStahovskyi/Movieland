@@ -6,9 +6,13 @@ spring:
   jpa:
     properties:
       hibernate:
-       # ddl-auto: create
+        # ddl-auto: create
         dialect: org.hibernate.dialect.PostgreSQLDialect
         format_sql: true
+
+  data:
+    mongodb:
+      auto-index-creation: true
 
   flyway:
     enabled: true
@@ -20,3 +24,25 @@ scheduled:
 
   fixedDelay:
     hours: 4
+
+# TimeOutTask for parallel enrichment
+task:
+  timeOut:
+    seconds: 5
+
+#  Task Executor Configuration
+executor:
+  max:
+    pool:
+      size: 10
+
+  core:
+    pool:
+      size: 3
+
+  queue:
+    capacity: 10
+
+  thread:
+    name:
+      prefix: "taskExecutor-"

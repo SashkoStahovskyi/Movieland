@@ -8,14 +8,17 @@ import com.stahovskyi.movieland.service.dto.response.DetailedMovieDto;
 import com.stahovskyi.movieland.service.entity.common.CurrencyType;
 import com.stahovskyi.movieland.service.entity.request.MovieRequest;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -29,20 +32,14 @@ public class MovieController {
     private final MovieMapper movieMapper;
 
 
- /*   @GetMapping
-    protected List<MovieDto> getAll() {
-        return movieMapper.toMovieDtoList(movieService.getAll());
+    @GetMapping
+    protected List<MovieDto> getAll(MovieRequest request) {
+        return movieMapper.toMovieDtoList(movieService.getAll(request));
     }
 
-    @GetMapping
-    protected List<MovieDto> getAll(@RequestBody(required = false)
-                                    MovieRequest request) {
-        return movieMapper.toMovieDtoList(movieService.getAll(request));
 
-    }*/
-
-    @GetMapping(path = "/{movieId}")
-    protected DetailedMovieDto getById(@PathVariable(value = "movieId") int movieId,
+    @GetMapping(path = "/{id}")
+    protected DetailedMovieDto getById(@PathVariable(value = "id") int movieId,
                                        @RequestParam(value = "currency", required = false) CurrencyType currencyType) {
         return movieMapper.toDetailedMovieDto(movieService.getById(movieId, currencyType));
 
@@ -61,10 +58,18 @@ public class MovieController {
 
 
     @PostMapping
+    @ResponseStatus(code = HttpStatus.CREATED)
     @PreAuthorize("hasAnyRole('ADMIN')")
     protected MovieDto add(@RequestBody MovieRequestDto movieRequestDto) {
         return movieMapper.toMovieDto(movieService.add(movieRequestDto));
+    }
 
+    @PutMapping("/{id}")
+    @ResponseStatus(code = HttpStatus.OK)
+    @PreAuthorize("hasAnyRole('ADMIN')")
+    protected MovieDto update(@PathVariable("id") int id,
+                              @RequestBody MovieRequestDto movieRequestDto) {
+        return movieMapper.toMovieDto(movieService.update(id, movieRequestDto));
     }
 
 }

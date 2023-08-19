@@ -5,7 +5,7 @@ import lombok.Getter;
 
 
 @AllArgsConstructor
-public enum SortDirection {
+public enum PriceSortDirection {
 
     ASC("ASC"),
 

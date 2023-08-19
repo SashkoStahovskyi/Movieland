@@ -12,7 +12,7 @@
 
     <appender name="Console" class="ch.qos.logback.core.ConsoleAppender">
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
-            <pattern>%-4r %magenta([%t]) %highlight(%-5level) %cyan(%C{1.}) - %magenta(%m) - %X{requestId}  %X{user}%n
+            <pattern>%-4r %magenta([%t]) %highlight(%-5level) %cyan(%C{1.}) - %yellow(%m) - %X{requestId} %X{user}%n
 
             </pattern>
         </encoder>
@@ -39,9 +39,7 @@
     <root level="DEBUG">
         <appender-ref ref="RollingFile"/>
     </root>
-    <root level="INFO">
-        <appender-ref ref="Console"/>
-    </root>
+
     <root level="INFO">
         <appender-ref ref="Console"/>
     </root>

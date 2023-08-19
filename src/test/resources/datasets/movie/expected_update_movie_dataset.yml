@@ -1,0 +1,50 @@
+MOVIE:
+  - ID: 1
+    NAME_RUSSIAN: 'Побег из Шоушенка 2'
+    NAME_NATIVE: 'The Shaw shank Redemption 2'
+    DESCRIPTION: 'Успешный банкир Энди Дюфрейн.'
+    PICTURE_PATH: 'https://images-new-poster-for-movie.ssl-images-amazon.com/images/.jpg'
+    YEAR_OF_RELEASE: '1994-01-01'
+    RATING: 5.5
+    PRICE: 100.5
+    VOTES: 100
+
+GENRE:
+  - ID: 1
+    NAME: "драма"
+
+  - ID: 2
+    NAME: "криминал"
+
+  - ID: 3
+    NAME: "фэнтези"
+
+  - ID: 4
+    NAME: "детектив"
+
+MOVIE_GENRE:
+  - MOVIE_ID: 1
+    GENRE_ID: 3
+
+  - MOVIE_ID: 1
+    GENRE_ID: 4
+
+COUNTRY:
+  - ID: 1
+    NAME: "Украина"
+
+  - ID: 2
+    NAME: "Япония"
+
+  - ID: 3
+    NAME: "Канада"
+
+  - ID: 4
+    NAME: "Франция"
+
+MOVIE_COUNTRY:
+  - MOVIE_ID: 1
+    COUNTRY_ID: 3
+
+  - MOVIE_ID: 1
+    COUNTRY_ID: 4

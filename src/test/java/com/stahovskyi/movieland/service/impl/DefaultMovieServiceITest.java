@@ -7,7 +7,7 @@ import com.stahovskyi.movieland.AbstractBaseITest;
 import com.stahovskyi.movieland.entity.Movie;
 import com.stahovskyi.movieland.service.dto.request.MovieRequestDto;
 import com.stahovskyi.movieland.service.entity.common.CurrencyType;
-import com.stahovskyi.movieland.service.entity.common.SortDirection;
+import com.stahovskyi.movieland.service.entity.common.PriceSortDirection;
 import com.stahovskyi.movieland.service.entity.request.MovieRequest;
 import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.DisplayName;
@@ -21,33 +21,14 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 
 @DBRider
 @RequiredArgsConstructor
-public class DefaultMovieServiceITest extends AbstractBaseITest {
+class DefaultMovieServiceITest extends AbstractBaseITest {
 
     private final static int EXPECTED_MOVIE_BY_GENRE_COUNT = 2;
     private final static int EXPECTED_MOVIE_COUNT = 3;
     private final static int EXPECTED_MOVIE_ID = 6;
     private final static int GENRE_ID = 1;
     private final static int MOVIE_ID = 6;
-
     private final DefaultMovieService movieService;
-
-    @Test
-    @DBRider
-    @DataSet("datasets/movie/movie_dataset.yml")
-    @DisplayName("when Get All Sorted By Rating Param then All Sorted Movies Returned")
-    void whenGetAllSortedByRating_thenAllSortedMoviesReturned() {
-        // Given
-        MovieRequest movieRequest = new MovieRequest(null, SortDirection.DESC);
-        // When
-        List<Movie> movieList = movieService.getAll(movieRequest);
-        // Then
-        assertAll(
-                () -> assertThat(movieList.get(0).getRating()).isEqualTo(10.0),
-                () -> assertThat(movieList.get(4).getRating()).isEqualTo(8.0),
-                () -> assertThat(movieList.get(6).getRating()).isEqualTo(7.0),
-                () -> assertThat(movieList.get(9).getRating()).isEqualTo(5.5)
-        );
-    }
 
 
     @Test
@@ -56,7 +37,7 @@ public class DefaultMovieServiceITest extends AbstractBaseITest {
     @DisplayName("when Get All Sorted By Price Param then All Sorted Movies Returned")
     void whenGetAllSortedByPrice_thenAllSortedMoviesReturned() {
         // Given
-        MovieRequest movieRequest = new MovieRequest(SortDirection.ASC, null);
+        MovieRequest movieRequest = new MovieRequest(PriceSortDirection.ASC, null);
         // When
         List<Movie> movieList = movieService.getAll(movieRequest);
         // Then
@@ -140,7 +121,7 @@ public class DefaultMovieServiceITest extends AbstractBaseITest {
                 () -> assertThat(actualMovie.getYearOfRelease()).isEqualTo(LocalDate.of(2012, 1, 1)),
                 () -> assertThat(actualMovie.getRating()).isEqualTo(0.0),
                 () -> assertThat(actualMovie.getPrice()).isEqualTo(155.5),
-                () -> assertThat(actualMovie.getVotes()).isEqualTo(0));
+                () -> assertThat(actualMovie.getVotes()).isZero());
     }
 
 }

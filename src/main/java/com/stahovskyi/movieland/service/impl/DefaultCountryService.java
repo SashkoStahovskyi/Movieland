@@ -19,4 +19,11 @@ public class DefaultCountryService implements CountryService {
     public List<Country> findAllByIdIn(List<Integer> countriesId) {
         return countryRepository.findAllByIdIn(countriesId);
     }
+
+    @Override
+    public List<Country> findByMovieId(int id) {
+        return countryRepository.findByMovieId(id);
+    }
+
+
 }

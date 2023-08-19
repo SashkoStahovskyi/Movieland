@@ -20,9 +20,9 @@ public class CurrencyConvertorService implements CurrencyService {
 
     private static final String NBU_URI = "https://bank.gov.ua/NBUStatService/v1/statdirectory/exchangenew?json";
     private final WebClient nbuClient = WebClient.create(NBU_URI);
-    private final static int SCALE = 2;
+    private static final int SCALE = 2;
 
-    @Override
+    @Override   // TODO RETRY IMPLEMENT
     public Movie convertPrice(Movie movie, CurrencyType currencyType) {
         if (currencyType != CurrencyType.UAH) {
             List<Currency> currenciesList = getCurrentExchangeRate();
@@ -55,7 +55,7 @@ public class CurrencyConvertorService implements CurrencyService {
     }
 
     private double convert(double rate, double moviePrice) {
-        return new BigDecimal(moviePrice / rate)
+        return BigDecimal.valueOf(moviePrice / rate)
                 .setScale(SCALE, RoundingMode.CEILING)
                 .doubleValue();
     }

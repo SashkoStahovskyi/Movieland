@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.Fetch;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -23,7 +24,7 @@ import java.util.List;
 
 @Builder
 @Setter
-@Getter
+@Getter        // todo equals and hash?? tostring ??
 @Entity
 @Table(name = "MOVIE")
 @NoArgsConstructor
@@ -72,7 +73,12 @@ public class Movie {
             inverseJoinColumns = @JoinColumn(name = "country_id"))
     private List<Country> countries = new ArrayList<>();
 
-    @OneToMany(mappedBy = "movie")
-    private List<Review> reviews = new ArrayList<>();
+    @OneToMany(mappedBy = "movie")  // todo Cascade Type ALL ??
+    private List<Review> reviews = new ArrayList<>(); // todo need refactoring to set
+
+    public void addReview(Review review) {  // important ! with ALL CASCADE ??
+        reviews.add(review);
+        review.setMovie(this);
+    }
 
 }
