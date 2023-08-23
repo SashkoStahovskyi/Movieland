@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: movieland-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: movieland-app
+  template:
+    metadata:
+      labels:
+        app: movieland-app
+    spec:
+      containers:
+        - name: movieland-app-container
+          image: airavataelephant/movieland:v2
+          ports:
+            - containerPort: 8080
+          env: 
+            - name: DB_HOST
+              value: postgres-db
+            - name: DB_NAME
+              value: movieland
+            - name: DB_USERNAME
+              value: postgres
+            - name: DB_PASSWORD
+              value: airavata
+      imagePullSecrets:
+        - name: regcred

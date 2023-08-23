@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+methadata:
+  name: app-service
+spec: 
+  selector:
+    app: movieland-app
+  ports:
+    - protocol: "TCP"
+      port: 8080
+      targetPort: 8080
+  type: NodePort
