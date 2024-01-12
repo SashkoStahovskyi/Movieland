@@ -25,8 +25,11 @@ public class LoginController {
 
     @PostMapping("/login")
     protected LoginDto getLogin(@RequestBody LoginRequestDto request) {
-        log.info("Successful signing up for user {} ", request.getEmail());
-        return loginMapper.toLoginDto(loginService.getLogin(request.getEmail(), request.getPassword()));
+        log.info("Accept request to login with email {} ", request.getEmail());
+        LoginDto loginDto = loginMapper.toLoginDto(loginService.getLogin(request.getEmail(), request.getPassword()));
+        log.info(" return nicknameme from login controller --> {} ", loginDto.getNickname());
+        log.info(" return token from login controller --> {} ", loginDto.getToken());
+        return loginDto;
     }
 
 }
