@@ -1,0 +1,17 @@
+version: "3.8"
+
+services:
+
+  app:
+    container_name: mv_app_cont
+    image: airavataelephant/movieland:v6
+    restart: always
+    ports:
+      - "8080:8080" # expose /cont port
+
+    environment:
+      DB_NAME: "movieland"
+      DB_USERNAME: "airavata"
+      DB_PASSWORD: "airavata"
+      DB_PORT: 5432
+      DB_HOST: "db"

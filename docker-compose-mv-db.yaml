@@ -1,0 +1,21 @@
+version: "3.9"
+
+services:
+
+  db:
+    container_name: mv-db
+    image: postgres:14.4
+
+    environment:
+      POSTGRES_DB: "movieland"
+      POSTGRES_USER: "app"
+      POSTGRES_PASSWORD: "app"
+
+    volumes:
+      - "C:/Projects/Movieland_Docker_Data:/var/lib/postgresql/data"
+    ports:
+      - "5433:5433"
+    restart: always
+
+volumes:
+  Movieland_Docker_Data:

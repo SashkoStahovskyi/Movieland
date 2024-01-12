@@ -1,0 +1,35 @@
+version: "3.8"
+
+services:
+
+  db:
+    container_name: mv_db_cont
+    image: postgres:14.8-alpine
+    ports:
+      - "5433:5432"  # host or expose port /cont
+    restart: always
+    env_file:
+      - db.env
+    volumes:
+      - "C:/Projects/Movieland_Docker_Data:/var/lib/postgresql/data"
+    networks:
+      - backend
+
+  app:
+    container_name: mv_app_cont
+    image: airavataelephant/movieland:v8
+    restart: always
+    ports:
+      - "8080:8080" # expose /cont port
+    depends_on:
+      - db
+    env_file:
+      - app.env
+    networks:
+      - backend
+
+volumes:
+  Movieland_Docker_Data:
+
+networks:
+  backend:
