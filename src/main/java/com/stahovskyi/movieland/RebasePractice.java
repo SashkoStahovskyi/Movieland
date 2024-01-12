@@ -4,4 +4,6 @@ public class RebasePractice {
 
     private String name;
 
+    private String  rebaseBranch1;
+
 }
