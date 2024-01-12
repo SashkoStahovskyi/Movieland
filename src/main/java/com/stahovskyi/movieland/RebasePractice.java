@@ -6,4 +6,6 @@ public class RebasePractice {
 
     private String addMainBranchChanges;
 
+    private String addMainBranchChanges2;
+
 }
