@@ -8,4 +8,7 @@ public class RebasePractice {
 
     private String  rebaseBranch2;
 
+    private String  rebaseBranch3;
+
+
 }
